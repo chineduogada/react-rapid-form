@@ -1,6 +1,5 @@
 import FormContainer from './components/Form/FormContainer'
-import { Input, Select } from './components/Form/Fields'
+import { Input, Textarea, Select } from './components/Form/Fields'
 
-export { FormContainer, Input, Select }
-
+export { FormContainer, Input, Textarea, Select }
 

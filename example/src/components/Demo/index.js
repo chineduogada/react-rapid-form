@@ -4,6 +4,7 @@ import { FormContainer } from '@richcode/react-rapid-form'
 
 const initialValues = {
   name: '',
+  msg: '',
   age: '',
   height: '',
   custom: ''
@@ -22,6 +23,7 @@ const onSubmit = (values, props) => {
 
 const validationSchema = Yup.object({
   name: Yup.string().required('required'),
+  msg: Yup.string(),
   age: Yup.string().required('required'),
   height: Yup.string().required('required'),
   custom: Yup.number().typeError('must be a number').required('required')
@@ -49,6 +51,7 @@ function Demo() {
         render={({
           formik,
           renderInput,
+          renderTextarea,
           renderSelect,
           renderSubmitBtn,
           renderBtn,
@@ -56,6 +59,8 @@ function Demo() {
         }) => (
           <form onSubmit={formik.handleSubmit}>
             {renderInput({ name: 'name', label: 'Name' })}
+
+            {renderTextarea({ name: 'msg', label: 'Message' })}
 
             {renderSelect({
               name: 'height',

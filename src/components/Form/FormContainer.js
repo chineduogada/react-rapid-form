@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { useFormik } from 'formik'
 import { object, func } from 'prop-types'
-import { Input, Select } from './Fields'
+import { Input, Select, Textarea } from './Fields'
 
 function FormContainer({ initialValues, onSubmit, validationSchema, render }) {
   const formik = useFormik({
@@ -42,6 +42,40 @@ function FormContainer({ initialValues, onSubmit, validationSchema, render }) {
     }
 
     return <Input {...fieldProps} />
+  }
+
+  /**
+   * renderTextarea - renders an textarea element
+   * @function
+   * @param {{ name: string, label: string }} props - the props for the textarea. add any addition <input> attrs if necessary. eg: `placeholder`
+   */
+  const renderTextarea = (props = {}) => {
+    const {
+      name,
+      label,
+      onChange,
+      showErrorWhenNotFocused = false,
+      ...rest
+    } = props
+
+    const fieldProps = {
+      showErrorWhenNotFocused,
+      formik,
+      name,
+      label,
+
+      error: formik.errors[name],
+      value: formik.values[name],
+
+      onChange: (e) => {
+        formik.handleChange(e)
+        if (onChange) onChange(e)
+      },
+
+      ...rest
+    }
+
+    return <Textarea {...fieldProps} />
   }
 
   /**
@@ -127,6 +161,7 @@ function FormContainer({ initialValues, onSubmit, validationSchema, render }) {
   const data = {
     formik,
     renderInput,
+    renderTextarea,
     renderSelect,
     renderBtn,
     fieldProps,
