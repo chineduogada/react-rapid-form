@@ -1,6 +1,6 @@
-import React from 'react'
-import styles from './styles.module.css'
+import FormContainer from './components/Form/FormContainer'
+import { Input, Select } from './components/Form/Fields'
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export { FormContainer, Input, Select }
+
+
