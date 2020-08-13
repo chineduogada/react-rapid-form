@@ -129,8 +129,8 @@ function FormContainer({ initialValues, onSubmit, validationSchema, render }) {
     renderInput,
     renderSelect,
     renderBtn,
-    renderSubmitBtn,
-    fieldProps
+    fieldProps,
+    renderSubmitBtn
   }
 
   return render(data)
