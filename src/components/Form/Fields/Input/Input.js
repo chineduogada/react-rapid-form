@@ -10,44 +10,44 @@ import {
 } from 'prop-types'
 import { renderError } from '../helpers'
 
-function TextField({
+function Input({
   name,
-  label,
   value,
   onChange,
   error,
   showErrorWhenNotFocused,
+  hideErrorMessage,
   formik = {},
   type = 'text',
   ...rest
 }) {
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
+    <div className='form__group'>
       <input
         name={name}
-        label={label}
         id={name}
         value={value}
         onChange={onChange}
         type={type}
         onBlur={!showErrorWhenNotFocused ? formik.handleBlur : () => {}}
+        className='form__control form__input'
         {...rest}
       />
-      {renderError(showErrorWhenNotFocused, error, formik, name)}
+      {!hideErrorMessage &&
+        renderError(showErrorWhenNotFocused, error, formik, name)}
     </div>
   )
 }
 
-TextField.propTypes = {
+Input.propTypes = {
   name: string.isRequired,
-  label: string.isRequired,
   type: string,
   error: string,
   value: oneOfType([string, number, instanceOf(Date)]).isRequired,
   onChange: func.isRequired,
   formik: object,
-  showErrorWhenNotFocused: bool
+  showErrorWhenNotFocused: bool,
+  hideErrorMessage: bool
 }
 
-export default TextField
+export default Input

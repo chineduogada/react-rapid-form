@@ -12,18 +12,17 @@ import { renderError } from '../helpers'
 
 function Textarea({
   name,
-  label,
   value,
   onChange,
   error,
   showErrorWhenNotFocused,
+  hideErrorMessage,
   formik = {},
   type = 'text',
   ...rest
 }) {
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
+    <div className='form__group'>
       <textarea
         name={name}
         label={label}
@@ -31,23 +30,26 @@ function Textarea({
         value={value}
         onChange={onChange}
         type={type}
+        className='form__control form__textarea'
         onBlur={!showErrorWhenNotFocused ? formik.handleBlur : () => {}}
         {...rest}
       />
-      {renderError(showErrorWhenNotFocused, error, formik, name)}
+
+      {!hideErrorMessage &&
+        renderError(showErrorWhenNotFocused, error, formik, name)}
     </div>
   )
 }
 
 Textarea.propTypes = {
   name: string.isRequired,
-  label: string.isRequired,
   type: string,
   error: string,
   value: oneOfType([string, number, instanceOf(Date)]).isRequired,
   onChange: func.isRequired,
   formik: object,
-  showErrorWhenNotFocused: bool
+  showErrorWhenNotFocused: bool,
+  hideErrorMessage: bool
 }
 
 export default Textarea

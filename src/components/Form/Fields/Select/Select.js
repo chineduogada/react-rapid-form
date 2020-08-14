@@ -12,43 +12,47 @@ import {
 } from 'prop-types'
 function Select({
   name,
-  label,
+  placeholder,
   value,
   onChange,
   error,
   showErrorWhenNotFocused,
+  hideErrorMessage,
   formik = {},
   options = [],
   ...rest
 }) {
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
+    <div className='form__group'>
       <select
         data-test='control'
         id={name}
         value={value}
         name={name}
         onChange={onChange}
+        className='form__control form__select'
         {...rest}
       >
-        <option data-test='option' value=''></option>
+        <option data-test='option' value=''>
+          {placeholder}
+        </option>
 
-        {options.map(({ id, label }, index) => (
-          <option value={id} key={index}>
-            {label}
+        {options.map(({ values, placeholder }, index) => (
+          <option value={values} key={index}>
+            {placeholder}
           </option>
         ))}
       </select>
 
-      {renderError(showErrorWhenNotFocused, error, formik, name)}
+      {!hideErrorMessage &&
+        renderError(showErrorWhenNotFocused, error, formik, name)}
     </div>
   )
 }
 
 Select.propTypes = {
   name: string.isRequired,
-  label: string.isRequired,
+  placeholder: string,
   value: oneOfType([string, number]).isRequired,
   options: arrayOf(
     shape({
@@ -59,6 +63,7 @@ Select.propTypes = {
   onChange: func.isRequired,
   formik: object,
   showErrorWhenNotFocused: bool,
+  hideErrorMessage: bool,
   error: string
 }
 

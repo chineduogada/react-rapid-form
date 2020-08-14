@@ -37,9 +37,9 @@ function Demo() {
   }
 
   const heightOptions = [
-    { id: 2, label: 'two' },
-    { id: 3.5, label: 'three and half' },
-    { id: 6, label: '6ix' }
+    { value: 2, placeholder: 'two' },
+    { value: 3.5, placeholder: 'three and half' },
+    { value: 6, placeholder: '6ix' }
   ]
 
   const [displayAge, setDisplayAge] = useState(true)
@@ -121,5 +121,4 @@ function Demo() {
 }
 
 export default Demo
-
 
