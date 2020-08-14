@@ -1,5 +1,5 @@
 import React from 'react'
-import '@richcode/react-rapid-form/dist/index.css'
+import 'react-richcode-form/dist/index.css'
 import Demo from './components/Demo'
 
 const App = () => {
@@ -7,5 +7,4 @@ const App = () => {
 }
 
 export default App
-
 

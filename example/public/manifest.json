@@ -1,6 +1,6 @@
 {
-  "short_name": "@richcode/react-rapid-form",
-  "name": "@richcode/react-rapid-form",
+  "short_name": "react-richcode-form",
+  "name": "react-richcode-form",
   "icons": [
     {
       "src": "favicon.ico",

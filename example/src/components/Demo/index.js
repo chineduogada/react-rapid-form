@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import * as Yup from 'yup'
-import { FormContainer } from '@richcode/react-rapid-form'
+import { FormContainer } from 'react-richcode-form'
 
 const initialValues = {
   name: '',
@@ -53,8 +53,8 @@ function Demo() {
           renderInput,
           renderTextarea,
           renderSelect,
-          renderSubmitBtn,
           renderBtn,
+          renderSubmitBtn,
           fieldProps
         }) => (
           <form onSubmit={formik.handleSubmit}>
@@ -121,4 +121,5 @@ function Demo() {
 }
 
 export default Demo
+
 
