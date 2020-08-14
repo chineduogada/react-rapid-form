@@ -12,6 +12,8 @@ import { renderError } from '../helpers'
 
 function Textarea({
   name,
+  label,
+  className,
   value,
   onChange,
   error,
@@ -22,7 +24,9 @@ function Textarea({
   ...rest
 }) {
   return (
-    <div className='form__group'>
+    <div className={`form__group ${className}`}>
+      {label && <label htmlFor={name}>{label}</label>}
+
       <textarea
         name={name}
         label={label}
@@ -43,6 +47,8 @@ function Textarea({
 
 Textarea.propTypes = {
   name: string.isRequired,
+  label: string,
+  className: string,
   type: string,
   error: string,
   value: oneOfType([string, number, instanceOf(Date)]).isRequired,

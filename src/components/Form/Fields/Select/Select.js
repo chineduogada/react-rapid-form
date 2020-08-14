@@ -12,6 +12,8 @@ import {
 } from 'prop-types'
 function Select({
   name,
+  label,
+  className,
   placeholder,
   value,
   onChange,
@@ -23,7 +25,9 @@ function Select({
   ...rest
 }) {
   return (
-    <div className='form__group'>
+    <div className={`form__group ${className}`}>
+      {label && <label htmlFor={name}>{label}</label>}
+
       <select
         data-test='control'
         id={name}
@@ -52,6 +56,8 @@ function Select({
 
 Select.propTypes = {
   name: string.isRequired,
+  label: string,
+  className: string,
   placeholder: string,
   value: oneOfType([string, number]).isRequired,
   options: arrayOf(

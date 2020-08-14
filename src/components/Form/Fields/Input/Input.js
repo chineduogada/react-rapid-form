@@ -12,6 +12,8 @@ import { renderError } from '../helpers'
 
 function Input({
   name,
+  label,
+  className,
   value,
   onChange,
   error,
@@ -22,7 +24,9 @@ function Input({
   ...rest
 }) {
   return (
-    <div className='form__group'>
+    <div className={`form__group ${className}`}>
+      {label && <label htmlFor={name}>{label}</label>}
+
       <input
         name={name}
         id={name}
@@ -33,6 +37,7 @@ function Input({
         className='form__control form__input'
         {...rest}
       />
+
       {!hideErrorMessage &&
         renderError(showErrorWhenNotFocused, error, formik, name)}
     </div>
@@ -41,6 +46,8 @@ function Input({
 
 Input.propTypes = {
   name: string.isRequired,
+  label: string,
+  className: string,
   type: string,
   error: string,
   value: oneOfType([string, number, instanceOf(Date)]).isRequired,
