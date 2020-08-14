@@ -1,10 +1,10 @@
 {
-  "name": "@richcode/react-rapid-form",
+  "name": "react-richcode-form",
   "version": "1.0.0",
   "description": "A form component that uses &#x60;Formik&#x60; and &#x60;Yup&#x60 libs, and abstract the complexity of &#x60;Formik&#x60, by providing methods for &#x60;form&#x60; elements",
   "author": "chineduogada",
   "license": "MIT",
-  "repository": "chineduogada/react-rapid-form",
+  "repository": "chineduogada/react-richcode-form",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
